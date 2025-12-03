@@ -1,24 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-    <head>
-
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coleta</title>
-<link rel="stylesheet" href="assets/css/style.css">
+<title>Coleta · Reciclalegre</title>
+<link rel="stylesheet" href="../css/style.css">
 
-    </head>
 
-    <body>
+</head>
 
-<header><h1>Coleta</h1></header>
+<body class="coleta-body">
 
-        <main>
+    <header class="coleta-hero">
+        <h1>Solicitar Coleta</h1>
+        <p>Escolha o tipo de material e envie seu pedido.</p>
+    </header>
 
-<p>Interface da funcionalidade da coleta.</p>
+    <main class="coleta-container">
 
-        </main>
-    </body>
 
+        <section class="tipos-coleta">
+            <div class="coleta-card">
+                <h3>📦 Papel e Papelão</h3>
+                <p>Jornais, caixas, folhas e documentos antigos.</p>
+            </div>
+
+            <div class="coleta-card">
+                <h3>🧴 Plásticos</h3>
+                <p>Garrafas PET, embalagens e tampas.</p>
+            </div>
+
+            <div class="coleta-card">
+                <h3>🔋 Eletrônicos</h3>
+                <p>Pilhas, cabos, carregadores e pequenos dispositivos.</p>
+            </div>
+        </section>
+
+        <section class="form-coleta">
+            <h2>Enviar Solicitação</h2>
+
+            <form>
+                <input type="text" placeholder="Seu nome" required>
+                <input type="text" placeholder="Endereço completo" required>
+                <input type="text" placeholder="Tipo de resíduo" required>
+                <textarea placeholder="Descreva o material" required></textarea>
+
+                <button class="btn-coleta">Enviar pedido</button>
+            </form>
+        </section>
+
+    </main>
+
+</body>
 </html>

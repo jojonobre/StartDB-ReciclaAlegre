@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfil do Usuário</title>
-<link rel="stylesheet" href="assets/css/style.css">
+<title>Perfil do Usuário · Reciclalegre</title>
+<link rel="stylesheet" href="../css/style.css">
+
+
 </head>
-<body>
-<header><h1>Meu Perfil</h1></header>
-<main>
-<p>Informações do usuário.</p>
-</main>
+
+<body class="perfil-body">
+
+    <header class="perfil-header">
+        <h1>Meu Perfil</h1>
+    </header>
+
+    <main class="perfil-container">
+
+        <section class="perfil-card">
+            
+            <div class="perfil-avatar">
+                <img src="assets/img/avatar.png" alt="Avatar do usuário">
+            </div>
+
+            <h2 class="perfil-nome">Nome do Usuário</h2>
+            <p class="perfil-email">email@exemplo.com</p>
+
+            <div class="perfil-info">
+                <h3>Informações</h3>
+
+                <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+                <p><strong>Tipo de Usuário:</strong> Cidadão</p>
+                <p><strong>Coletas solicitadas:</strong> 12</p>
+            </div>
+
+            <div class="perfil-acoes">
+                <button class="btn-editar">Editar Perfil</button>
+                <button class="btn-sair">Sair</button>
+            </div>
+
+        </section>
+
+    </main>
+
 </body>
 </html>

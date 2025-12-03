@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<link rel="stylesheet" href="assets/css/style.css">
+<title>Login · Reciclalegre</title>
+<link rel="stylesheet" href="../css/style.css">
+
+
 </head>
-<body>
-<div class="form-container">
-<h2>Login</h2>
-<form>
-<input type="email" placeholder="E-mail">
-<input type="password" placeholder="Senha">
-<button>Entrar</button>
-</form>
-</div>
+
+<body class="login-body">
+
+    <div class="login-card">
+
+        <div class="login-header">
+            <h2>Bem-vindo!</h2>
+            <p>Entre para continuar.</p>
+        </div>
+
+        <form class="login-form">
+            <input type="email" placeholder="E-mail" required>
+            <input type="password" placeholder="Senha" required>
+
+            <button class="btn-login">Entrar</button>
+        </form>
+
+        <p class="criar-conta">Não tem conta? <a href="cadastro.html">Criar conta</a></p>
+
+    </div>
+
 </body>
 </html>
