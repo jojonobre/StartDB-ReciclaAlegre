@@ -13,7 +13,7 @@ public interface UsuarioMapper {
     UsuarioResponseDTO toDto(Usuario usuario);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "isAtivo", expression = "java(true)")
+    @Mapping(target = "ativo", expression = "java(true)")
     @Mapping(target = "tipoUsuario", ignore = true)
     Usuario toEntity(UsuarioRequestDTO dto);
 }
