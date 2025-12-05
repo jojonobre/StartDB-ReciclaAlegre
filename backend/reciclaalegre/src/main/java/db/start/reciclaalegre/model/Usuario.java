@@ -1,5 +1,10 @@
 package db.start.reciclaalegre.model;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import db.start.reciclaalegre.model.enums.TipoUsuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Usuario {
+public class Usuario implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +43,21 @@ public class Usuario {
         this.senha = senha;
         this.telefone = telefone;
         this.isAtivo = ativo;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
     }
     
 }
