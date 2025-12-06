@@ -32,7 +32,6 @@ public class Usuario implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
     @Column(unique = true)
     private String email;
     private String senha;
@@ -41,12 +40,14 @@ public class Usuario implements UserDetails {
     private Perfil perfil;
 
     @Enumerated(EnumType.STRING)
-    private TipoUsuario tipoUsuario = TipoUsuario.INDEFINIDO;
+    private TipoUsuario tipoUsuario;
 
-    public Usuario(String email, String senha, Boolean ativo) {
+    public Usuario(String email, String senha, Boolean ativo,TipoUsuario tipoUsuario, Perfil perfil) {
         this.email = email;
         this.senha = senha;
         this.ativo = ativo;
+        this.tipoUsuario = tipoUsuario;
+        this.perfil = perfil;
     }
 
     @Override
