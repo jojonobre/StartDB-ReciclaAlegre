@@ -33,6 +33,7 @@ public class Solicitacao {
     private LocalDateTime dataCriacao;
     @Embedded
     private Endereco endereco;
+    private String telefone;
     @OneToMany
     private List<Material> materiais;
     @Enumerated(EnumType.STRING)
