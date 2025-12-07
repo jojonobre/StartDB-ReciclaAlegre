@@ -21,12 +21,16 @@ public class Perfil {
 
     @Id
     private Long id;
+    
     private String nome;
+
     @Embedded
     private Endereco endereco;
     private String telefone;
+
     @OneToMany(mappedBy = "gerador")
     private List<Solicitacao> solicitacoes;
+
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")

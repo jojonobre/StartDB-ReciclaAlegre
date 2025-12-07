@@ -1,7 +1,8 @@
 package db.start.reciclaalegre.model;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import db.start.reciclaalegre.model.enums.StatusSolicitacao;
 import jakarta.persistence.Embedded;
@@ -33,11 +34,18 @@ public class Solicitacao {
     private LocalDateTime dataCriacao;
     @Embedded
     private Endereco endereco;
-    private String telefone;
     @OneToMany
-    private List<Material> materiais;
+    private Set<Material> materiais = new HashSet<>();
     @Enumerated(EnumType.STRING)
     private StatusSolicitacao situacao;
     private String descricao;
+
+    public void addMaterial(Material material){
+        materiais.add(material);
+    }
+
+    public void removeMaterial(Material material){
+        materiais.remove(material);
+    }
 
 }
