@@ -1,5 +1,6 @@
 package db.start.reciclaalegre.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Embedded;
@@ -29,10 +30,18 @@ public class Perfil {
     private String telefone;
 
     @OneToMany(mappedBy = "gerador")
-    private List<Solicitacao> solicitacoes;
+    private List<Solicitacao> solicitacoes = new ArrayList<>();
 
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
     private Usuario usuario;
+
+    public void adicionarSolicitacao(Solicitacao solicitacao){
+        solicitacoes.add(solicitacao);
+    }
+
+    public void removerSolicitacao(Solicitacao solicitacao){
+        solicitacoes.remove(solicitacao);
+    }
 }
