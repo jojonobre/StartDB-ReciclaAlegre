@@ -236,3 +236,9 @@ function initEditarPerfil() {
 if (window.location.pathname.includes('editar-perfil.html')) {
     initEditarPerfil();
 }
+const perfilClickable = document.querySelector('#perfilClickable');
+if (perfilClickable) {
+    perfilClickable.addEventListener('click', () => {
+        window.location.href = 'editar-perfil.html';
+    });
+}

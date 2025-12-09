@@ -354,6 +354,15 @@ main {
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
+#perfilClickable {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#perfilClickable:hover {
+    background: rgba(0,0,0,0.05);
+}
+
 .card-edit form .group {
     margin-bottom: 18px;
 }
