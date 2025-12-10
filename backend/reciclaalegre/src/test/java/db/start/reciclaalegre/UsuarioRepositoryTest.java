@@ -1,43 +1,37 @@
 package db.start.reciclaalegre;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import db.start.reciclaalegre.model.Endereco;
 import db.start.reciclaalegre.model.Perfil;
 import db.start.reciclaalegre.model.Usuario;
 import db.start.reciclaalegre.model.enums.TipoUsuario;
-import db.start.reciclaalegre.repository.PerfilRepository;
 import db.start.reciclaalegre.repository.UsuarioRepository;
+import jakarta.persistence.EntityNotFoundException;
 
-@ExtendWith(MockitoExtension.class)
+@DataJpaTest
+@ActiveProfiles("test")
 public class UsuarioRepositoryTest {
 
-    @Mock
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Mock
-    private PerfilRepository perfilRepository;
-
+    @MockitoBean
+    private PasswordEncoder passwordEncoder;
 
     @Test
     public void deveSalvarUsuarioNoRepository() throws Exception {
         Usuario usuario = new Usuario();
         Perfil perfil = new Perfil();
-        usuario.setId(1L);
         usuario.setEmail("email1@email.com");
-        usuario.setSenha("senha123");
+        usuario.setSenha(passwordEncoder.encode("senha123"));
         usuario.setAtivo(true);
         usuario.setTipoUsuario(TipoUsuario.GERADOR);
         perfil.setEndereco(new Endereco("99999999", "Rua rua1", "200", "lagoinha", "cidade", "estado", "Brasil"));
@@ -47,12 +41,12 @@ public class UsuarioRepositoryTest {
         perfil.setUsuario(usuario);
         usuario.setPerfil(perfil);
 
-        when(usuarioRepository.save(usuario)).thenReturn(usuario);
-        Usuario result = usuarioRepository.save(usuario);
-        assertEquals(usuario.getEmail(), result.getEmail());
-        assertEquals(usuario.getSenha(), result.getSenha());
-        assertEquals(perfil, result.getPerfil());
-        assertNotNull(result.getId());
-        verify(usuarioRepository, times(1)).save(any(Usuario.class));
+
+        Usuario salvo = usuarioRepository.save(usuario);
+
+        Usuario resultado = usuarioRepository.findById(salvo.getId()).orElseThrow(() -> new EntityNotFoundException());
+        
+        assertEquals(resultado, salvo);
+        assertEquals(salvo.getEmail(), usuario.getEmail());
     }
 }
