@@ -66,7 +66,7 @@ export default function RegisterPage() {
                     setError(err.message);
                 }
             } else {
-                setError("Erro desconhecido ao registrar.");
+                setError("Erro desconhecido ao registrars.");
             }
         } finally {
             setLoading(false);
