@@ -14,7 +14,7 @@ export async function loginUser(data: LoginDTO): Promise<{ token: string }> {
         body: JSON.stringify(data),
     })
     if (!res.ok) throw new Error('Login falhou')
-    const token = await res.text() 
+    const token = await res.text()
     return { token }
 }
 
@@ -70,9 +70,9 @@ export async function careggarSolicitacoes(token: string): Promise<SolicitacaoRe
         headers: { Authorization: `Bearer ${token}` },
     })
     console.log("Status:", res.status)
-    if (!res.ok){
+    if (!res.ok) {
         const text = await res.text()
-                console.log("Erro do servidor:", text)
+        console.log("Erro do servidor:", text)
         throw new Error('Não foi possível carregar solicitações')
     }
     return res.json()

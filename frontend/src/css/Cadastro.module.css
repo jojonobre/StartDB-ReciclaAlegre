@@ -74,6 +74,21 @@
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
+.papel{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.papel select{
+  padding: 10px 12px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  min-width: 40vh;
+}
+
 .grid2 {
   display: grid;
   grid-template-columns: 1fr 1fr;

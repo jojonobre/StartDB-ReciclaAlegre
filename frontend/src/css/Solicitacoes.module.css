@@ -1,0 +1,85 @@
+:root {
+  --solicitacoes-color-primary: #10b981;
+  --solicitacoes-color-primary-dark: #059669;
+  --solicitacoes-color-text-dark: #333;
+  --solicitacoes-color-text-secondary: #444;
+  --solicitacoes-color-card-bg: #ffffff;
+  --solicitacoes-color-border: #ccc;
+  --solicitacoes-border-radius: 8px;
+  --solicitacoes-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --solicitacoes-padding-card: 28px;
+  --solicitacoes-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: var(--font-family);
+  color: var(--color-text-dark);
+}
+
+h2 {
+  color: var(--color-primary-dark);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.error {
+  color: #ef4444; 
+  text-align: center;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--color-card-bg);
+  padding: var(--padding-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card p {
+  margin: 6px 0;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.card strong {
+  color: var(--color-primary-dark);
+}
+
+.button {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}

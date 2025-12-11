@@ -1,45 +1,61 @@
-import { useEffect, useState } from "react"
-import { careggarSolicitacoes } from "../components/auth/api"
-import type { SolicitacaoResponseDTO } from "../components/auth/AuthContext.types"
+import { useState, useEffect } from "react";
+import { careggarSolicitacoes } from "../components/auth/api";
+import type { SolicitacaoResponseDTO } from "../components/auth/AuthContext.types";
+import { useAuth } from "../hooks/useAuth";
+import styles from "../css/Solicitacoes.module.css";
 
-export default function ListaSolicitacoes({ token }: { token: string }) {
-    const [solicitacoes, setSolicitacoes] = useState<SolicitacaoResponseDTO[]>([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const dados = await careggarSolicitacoes(token)
-                setSolicitacoes(dados)
-            } catch (err: any) {
-                setError(err.message || "Erro ao carregar solicitações")
-            } finally {
-                setLoading(false)
-            }
-        }
+export default function Solicitacoes() {
+  const { token } = useAuth();
+  const [solicitacoes, setSolicitacoes] = useState<SolicitacaoResponseDTO[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-        fetchData()
-    }, [token])
+  useEffect(() => {
+    async function fetchSolicitacoes() {
+      setLoading(true);
+      setError(null);
 
-    if (loading) return <p>Carregando...</p>
-    if (error) return <p style={{ color: "red" }}>{error}</p>
+      try {
+        const data = await careggarSolicitacoes(token!);
+        setSolicitacoes(data);
+      } catch (err: unknown) {
+        if (err instanceof Error) setError(err.message);
+        else setError("Erro desconhecido ao carregar solicitações");
+      } finally {
+        setLoading(false);
+      }
+    }
 
-    return (
-        <div>
-            <h2>Solicitações</h2>
+    fetchSolicitacoes();
+  }, [token]);
 
-            {solicitacoes.length === 0 ? (
-                <p style={{ opacity: 0.6 }}>Sem solicitações para serem listadas.</p>
-            ) : (
-                <ul>
-                    {solicitacoes.map((s) => (
-                        <li key={s.id}>
-                            <strong>ID:</strong> {s.id} — {s.descricao}
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
-    )
+  if (loading) return <p>Carregando solicitações...</p>;
+  if (error) return <p className={styles.error}>{error}</p>;
+  if (solicitacoes.length === 0) return <p>Nenhuma solicitação encontrada.</p>;
+
+  return (
+    <div className={styles.container}>
+      <h2>Solicitações</h2>
+      <ul className={styles.list}>
+        {solicitacoes.map((s) => (
+          <li key={s.id} className={styles.card}>
+            <p><strong>ID:</strong> {s.id}</p>
+            <p><strong>Gerador:</strong> {s.gerador}</p>
+            <p><strong>Data:</strong> {new Date(s.dataCriacao).toLocaleString()}</p>
+            <p><strong>Situação:</strong> {s.situacao}</p>
+            <p><strong>Descrição:</strong> {s.descricao}</p>
+            <p>
+              <strong>Endereço:</strong>{" "}
+              {`${s.endereco.logradouro}, ${s.endereco.numero} - ${s.endereco.bairro}, ${s.endereco.cidade}/${s.endereco.estado}`}
+            </p>
+            <p>
+              <strong>Materiais:</strong>{" "}
+              {s.materiais.map((m) => `${m.tipoMaterial} (${m.quantidadeMaterial})`).join(", ")}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

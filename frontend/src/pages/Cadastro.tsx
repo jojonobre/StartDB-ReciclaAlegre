@@ -11,7 +11,7 @@ export default function Cadastro() {
     const [form, setForm] = useState<UsuarioRequestDTO>({
         email: "",
         senha: "",
-        tipoUsuario: "INDEFINIDO",
+        tipoUsuario: "GERADOR",
         perfil: {
             nome: "",
             telefone: "",
@@ -124,6 +124,17 @@ export default function Cadastro() {
                         />
                     </div>
                 </div>
+                <div className={styles.papel}>
+                    <label>Selecione o seu papel para mudar o mundo!</label>
+                    <select
+                        value={form.tipoUsuario}
+                        onChange={(e) => handleChange("tipoUsuario", e.target.value)}
+                    >
+                        <option value="GERADOR">Gerador</option>
+                        <option value="COLETOR">Coletor</option>
+                    </select>
+                </div>
+
 
                 <h3 className={styles.subtitle}>Endereço</h3>
 

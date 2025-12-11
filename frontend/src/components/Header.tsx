@@ -17,7 +17,7 @@ export default function Header() {
 
       <button
         className={styles.addButton}
-        onClick={() => navigate("/AdicionarColeta")}
+        onClick={() => navigate("/AdicionarSolicitacao")}
       >
         Adicionar Coleta
       </button>

@@ -29,6 +29,7 @@ export async function loginUsuario(data: LoginDTO): Promise<string> {
         },
         body: JSON.stringify(data)
     })
+    console.log("Resposta do servidor:", response)
     if(!response.ok){
         throw new Error(await response.text())
     }

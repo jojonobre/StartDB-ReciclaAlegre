@@ -17,7 +17,7 @@ export interface PerfilRequestDTO {
 export interface UsuarioRequestDTO {
     email: string
     senha: string
-    tipoUsuario: 'INDEFINIDO' | 'GERADOR' | 'COLETOR' | 'ADMINISTRADOR'
+    tipoUsuario: 'GERADOR' | 'COLETOR' | 'ADMINISTRADOR'
     perfil: PerfilRequestDTO
 }
 
@@ -31,7 +31,7 @@ export interface UsuarioResponseDTO {
     id: number
     email: string
     ativo: boolean
-    tipoUsuario: 'INDEFINIDO' | 'GERADOR' | 'COLETOR' | 'ADMINISTRADOR'
+    tipoUsuario: 'GERADOR' | 'COLETOR' | 'ADMINISTRADOR'
     perfil: PerfilResponseDTO
 }
 
@@ -39,7 +39,6 @@ export interface LoginDTO {
     email: string
     senha: string
 }
-
 
 export interface MaterialDTO {
     tipoMaterial:  'PAPEL'|'PLASTICO'|'METAL'|'VIDRO'|'MADEIRA'| 'ELETRONICO'|'TECIDO'|'OLEO'|'ORGANICO'|'OUTROS'

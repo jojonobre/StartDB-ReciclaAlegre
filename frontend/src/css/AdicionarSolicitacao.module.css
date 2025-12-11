@@ -1,0 +1,113 @@
+:root {
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+  --color-text-dark: #333;
+  --color-text-secondary: #444;
+  --color-bg: #f5f6fa;
+  --color-card-bg: #ffffff;
+  --color-border: #ccc;
+  --border-radius: 8px;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --padding-card: 20px;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: var(--font-family);
+  color: var(--color-text-dark);
+}
+
+h2, h3 {
+  color: var(--color-primary-dark);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--color-card-bg);
+  padding: var(--padding-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+.group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.group input,
+.group textarea,
+.group select {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.materialCard {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  background: var(--color-bg);
+  padding: 12px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+}
+
+.addButton,
+.submitButton,
+.removeButton {
+  padding: 10px 16px;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.addButton {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.addButton:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.submitButton {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.submitButton:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.removeButton {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.removeButton:hover {
+  background-color: #b91c1c;
+}
+
+.error {
+  color: #ef4444;
+  font-weight: 500;
+  text-align: center;
+}

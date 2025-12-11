@@ -51,6 +51,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         console.log(email,senha)
         try {
             const token = await loginUsuario({ email, senha })
+            console.log(token)
             setToken(token)
             const me = await fetchUser(token)
             setUser(me)
