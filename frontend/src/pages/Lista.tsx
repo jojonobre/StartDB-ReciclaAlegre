@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { careggarSolicitacoes } from "../components/auth/api";
+import { careggarSolicitacoes, requisitarColeta } from "../components/auth/api";
 import type { SolicitacaoResponseDTO } from "../components/auth/AuthContext.types";
 import { useAuth } from "../hooks/useAuth";
 import styles from "../css/Solicitacoes.module.css";
@@ -10,6 +10,22 @@ export default function Solicitacoes() {
   const [solicitacoes, setSolicitacoes] = useState<SolicitacaoResponseDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  async function handleRequisitar(id: number) {
+  try {
+    await requisitarColeta(id, token!);
+
+    setSolicitacoes((prev) =>
+      prev.map((s) =>
+        s.id === id ? { ...s, situacao: "PENDENTE" } : s
+      )
+    );
+  } catch (err) {
+    console.error(err);
+    alert("Erro ao requisitar coleta");
+  }
+}
+
 
   useEffect(() => {
     async function fetchSolicitacoes() {
@@ -40,6 +56,9 @@ export default function Solicitacoes() {
       <ul className={styles.list}>
         {solicitacoes.map((s) => (
           <li key={s.id} className={styles.card}>
+            <button className={styles.cardButton} onClick={() => handleRequisitar(s.id)} >
+              Reciclar!
+            </button>
             <p><strong>ID:</strong> {s.id}</p>
             <p><strong>Gerador:</strong> {s.gerador}</p>
             <p><strong>Data:</strong> {new Date(s.dataCriacao).toLocaleString()}</p>

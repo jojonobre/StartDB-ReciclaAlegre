@@ -9,6 +9,7 @@ import Sucesso from "./pages/Sucesso"
 import MainLayout from "./components/layout/MainLayout"
 import Lista from "./pages/Lista"
 import AdicionarSolicitacao from "./pages/AdicionarSolicitacao"
+import EditarSolicitacao from "./pages/EditarSolicitacoes"
 
 export default function App() {
     return (
@@ -25,7 +26,7 @@ export default function App() {
                     <Route element={<MainLayout />}>
                         <Route path="/Lista" element={<Lista />} />
                         <Route path="/AdicionarSolicitacao" element={<AdicionarSolicitacao />} />
-                        
+                        <Route path="/EditarSolicitacao" element={<EditarSolicitacao />} />
                     </Route>
                   </Route>
               </Routes>

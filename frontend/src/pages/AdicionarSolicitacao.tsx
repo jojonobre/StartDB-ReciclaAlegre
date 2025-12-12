@@ -80,7 +80,7 @@ export default function AdicionarSolicitacao() {
       };
 
       await criarSolicitacao(dto, token);
-      navigate("/solicitacoes");
+      navigate("/lista");
 
     } catch (err: any) {
       setError(err.message || "Erro ao criar solicitação.");

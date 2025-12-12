@@ -78,18 +78,47 @@ export async function careggarSolicitacoes(token: string): Promise<SolicitacaoRe
     return res.json()
 }
 
-export async function requisitarColeta(id: number, token: string): Promise<void> {
-    const res = await fetch(`${BASE_URL}/solicitacoes/claim/${id}`, {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${token}` },
-    })
-    if (!res.ok) throw new Error('Falha ao requisitar coleta')
+export async function requisitarColeta(id: number, token: string) {
+    const response = await fetch(`${BASE_URL}/solicitacoes/requisitar/${id}`, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+        }
+    });
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Erro ao requisitar coleta: ${errorText}`);
+    }
+
+    return response.json();
 }
 
-export async function getSolicitacoesByUsuario(token: string): Promise<SolicitacaoResponseDTO[]> {
-    const res = await fetch(`${BASE_URL}/solicitacoes/by-usuario`, {
+
+
+export async function atualizarSolicitacao(
+  id: number,
+  data: SolicitacaoRequestDTO,
+  token: string
+): Promise<SolicitacaoResponseDTO> {
+  const res = await fetch(`${BASE_URL}/solicitacoes/atualizar/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) throw new Error("Erro ao atualizar solicitação");
+  return res.json();
+}
+
+export async function carregarSolicitacoesPorUsuario(token: string): Promise<SolicitacaoResponseDTO[]> {
+    const res = await fetch(`${BASE_URL}/solicitacoes/usuario`, {
         headers: { Authorization: `Bearer ${token}` },
     })
-    if (!res.ok) throw new Error('Falha ao buscar solicitações do usuário')
+    if (!res.ok) throw new Error('Não foi possível carregar solicitações do usuário')
     return res.json()
 }

@@ -19,7 +19,7 @@ const Home: React.FC = () => {
         <div className="home-body">
 
             <header>
-                <div className="logo">♻ ReciclAlegre</div>
+                <div className="logo">ReciclAlegre</div>
 
                 <nav>
                     <Link to="/login">Login</Link>
