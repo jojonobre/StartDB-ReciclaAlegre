@@ -52,7 +52,7 @@ export default function Solicitacoes() {
 
   return (
     <div className={styles.container}>
-      <h2>Solicitações</h2>
+      <h2>Todas Solicitações Disponíveis</h2>
       <ul className={styles.list}>
         {solicitacoes.map((s) => (
           <li key={s.id} className={styles.card}>

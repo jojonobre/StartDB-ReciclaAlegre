@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<?> handleDataIntegrityViolantion(DataIntegrityViolationException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
+        return ResponseEntity.badRequest().body("Usuario já cadastrado. Efetue o login");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

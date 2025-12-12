@@ -48,6 +48,13 @@ export default function Header() {
       <div className={styles.buttons}>
         <button
           className={styles.addButton}
+          onClick={() => navigate("/Perfil")}
+        >
+          Meu Perfil
+        </button>
+
+        <button
+          className={styles.addButton}
           onClick={() => navigate("/Lista")}
         >
           Lista
@@ -56,7 +63,7 @@ export default function Header() {
           className={styles.addButton}
           onClick={() => navigate("/EditarSolicitacao")}
         >
-          Editar Solicitação
+          Minhas Solicitações
         </button>
 
         <button

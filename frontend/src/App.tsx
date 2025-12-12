@@ -10,6 +10,7 @@ import MainLayout from "./components/layout/MainLayout"
 import Lista from "./pages/Lista"
 import AdicionarSolicitacao from "./pages/AdicionarSolicitacao"
 import EditarSolicitacao from "./pages/EditarSolicitacoes"
+import Perfil from "./pages/Perfil"
 
 export default function App() {
     return (
@@ -27,6 +28,7 @@ export default function App() {
                         <Route path="/Lista" element={<Lista />} />
                         <Route path="/AdicionarSolicitacao" element={<AdicionarSolicitacao />} />
                         <Route path="/EditarSolicitacao" element={<EditarSolicitacao />} />
+                        <Route path="/Perfil" element={<Perfil />} />
                     </Route>
                   </Route>
               </Routes>
