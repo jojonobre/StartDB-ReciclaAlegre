@@ -238,3 +238,45 @@ nav a:hover {
     text-align: center;
   }
 }
+
+
+.sobre-hero-topbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--bg);
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  position: relative;      
+}
+
+.btn-voltar {
+  position: absolute;
+  left: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+ background: #38a169;
+ color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-voltar:hover {
+  opacity: 0.85;
+}
+
+.titulo-reciclalegre {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #38a169;
+}
+
